@@ -1,0 +1,42 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// 예약 문의
+model Reservation {
+  id          String   @id @default(cuid())
+  name        String
+  phone       String
+  email       String?
+  acType      String // 에어컨 종류 (e.g., '벽걸이', '스탠드')
+  photoUrl    String? // 사진 URL
+  desiredDate DateTime
+  notes       String?
+  createdAt   DateTime @default(now())
+}
+
+// 고객 후기
+model Review {
+  id        String   @id @default(cuid())
+  author    String
+  content   String
+  imageUrl  String?
+  rating    Int      @default(5)
+  createdAt DateTime @default(now())
+}
+
+// 관리자
+model AdminUser {
+  id        String   @id @default(cuid())
+  username  String   @unique
+  password  String // In a real app, this should be a hashed password
+  createdAt DateTime @default(now())
+}

@@ -1,4 +1,4 @@
-import type { IronSessionOptions } from 'iron-session';
+import type { SessionOptions } from 'iron-session';
 
 // 세션에 저장될 데이터의 타입을 정의합니다.
 export interface SessionData {
@@ -6,7 +6,7 @@ export interface SessionData {
   isLoggedIn: true;
 }
 
-export const sessionOptions: IronSessionOptions = {
+export const sessionOptions: SessionOptions = {
   // .env 파일에서 불러온 세션 비밀번호입니다.
   password: process.env.SESSION_PASSWORD as string,
   cookieName: 'cleanair-session', // 웹사이트에서 사용할 쿠키 이름

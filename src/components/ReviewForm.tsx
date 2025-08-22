@@ -36,8 +36,12 @@ export const ReviewForm = () => {
       // 페이지를 새로고침하여 새 후기를 포함한 목록을 다시 불러옵니다.
       router.refresh();
 
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        setError(err.message);
+      } else {
+        setError('알 수 없는 오류가 발생했습니다.');
+      }
     } finally {
       setIsSubmitting(false);
     }

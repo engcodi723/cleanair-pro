@@ -1,4 +1,4 @@
-import { NextResponse } from 'next/server';
+import { NextResponse, NextRequest } from 'next/server';
 import { PrismaClient } from '@prisma/client';
 import { getIronSession } from 'iron-session';
 import { cookies } from 'next/headers';
@@ -6,7 +6,7 @@ import { sessionOptions, type SessionData } from '@/lib/session';
 
 const prisma = new PrismaClient();
 
-export async function DELETE(request: Request, { params }: { params: { id: string } }) {
+export async function DELETE(request: NextRequest, { params }: { params: { id: string } }) {
   // 세션 정보를 가져와 로그인 상태를 확인합니다.
   const session = await getIronSession<SessionData>(cookies(), sessionOptions);
 

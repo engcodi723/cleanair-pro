@@ -4,15 +4,9 @@ import { getIronSession } from 'iron-session';
 import { cookies } from 'next/headers';
 import { sessionOptions, type SessionData } from '@/lib/session';
 
-interface Params {
-  params: {
-    id: string;
-  };
-}
-
 export async function DELETE(
   request: NextRequest,
-  { params }: Params
+  { params }: { params: { id: string } }
 ) {
   // 세션 정보를 가져와 로그인 상태를 확인합니다。
   const session = await getIronSession<SessionData>(cookies(), sessionOptions);

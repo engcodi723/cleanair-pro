@@ -1,11 +1,9 @@
 import { getIronSession } from 'iron-session';
 import { cookies } from 'next/headers';
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
 import { sessionOptions, type SessionData } from '@/lib/session';
-
-const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
   // iron-session을 사용하여 쿠키에서 세션 정보를 가져옵니다.

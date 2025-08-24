@@ -1,8 +1,6 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/lib/prisma';
 import { ReviewForm } from '@/components/ReviewForm';
 import Image from 'next/image';
-
-const prisma = new PrismaClient();
 
 // 후기 목록을 불러오는 함수
 async function getReviews() {

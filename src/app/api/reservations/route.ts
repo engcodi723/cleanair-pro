@@ -1,9 +1,5 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
-
-// Prisma Client 인스턴스를 생성합니다.
-// 실제 프로덕션 환경에서는 이 파일을 벗어난 곳에서 한 번만 생성하는 것이 좋습니다.
-const prisma = new PrismaClient();
+import { prisma } from '@/lib/prisma';
 
 export async function POST(request: Request) {
   try {

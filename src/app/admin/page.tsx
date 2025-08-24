@@ -1,14 +1,12 @@
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/lib/prisma';
 import { getIronSession } from 'iron-session';
 import { cookies } from 'next/headers';
 import { sessionOptions, SessionData } from '@/lib/session';
 import Link from 'next/link';
 import DeleteButton from '@/components/DeleteButton'; // Import DeleteButton
 
-const prisma = new PrismaClient();
-
 async function getAdminData() {
-  const session = await getIronSession<SessionData>(cookies(), sessionOptions);
+  const session = await getIronSession<SessionData>(await cookies(), sessionOptions);
   const username = session.username;
 
   const reservations = await prisma.reservation.findMany({

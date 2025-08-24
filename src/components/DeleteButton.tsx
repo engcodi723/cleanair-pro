@@ -34,7 +34,8 @@ const DeleteButton = ({ id, type }: DeleteButtonProps) => {
         alert(`삭제 중 오류 발생: ${err.message}`);
       } else {
         alert('알 수 없는 오류가 발생했습니다.');
-      } finally {
+      }
+    } finally {
       setIsDeleting(false);
     }
   };

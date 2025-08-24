@@ -1,6 +1,6 @@
 import { NextResponse, NextRequest } from 'next/server';
 import { prisma } from '@/lib/prisma';
-import { getIronSession }n from 'iron-session';
+import { getIronSession } from 'iron-session';
 import { cookies } from 'next/headers';
 import { sessionOptions, type SessionData } from '@/lib/session';
 

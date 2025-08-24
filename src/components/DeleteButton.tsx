@@ -29,9 +29,12 @@ const DeleteButton = ({ id, type }: DeleteButtonProps) => {
 
       alert('삭제되었습니다.');
       router.refresh(); // Revalidate data on the admin page
-    } catch (error: any) {
-      alert(`삭제 중 오류 발생: ${error.message}`);
-    } finally {
+    } catch (err: unknown) {
+      if (err instanceof Error) {
+        alert(`삭제 중 오류 발생: ${err.message}`);
+      } else {
+        alert('알 수 없는 오류가 발생했습니다.');
+      } finally {
       setIsDeleting(false);
     }
   };
